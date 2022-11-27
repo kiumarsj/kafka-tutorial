@@ -1,4 +1,3 @@
-#FROM openjdk:11.0.10-jre-buster
 FROM openjdk:20-slim-buster
 
 RUN apt-get update && \
