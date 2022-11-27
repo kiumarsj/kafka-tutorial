@@ -1,6 +1,6 @@
 kafka-topics.sh --create --bootstrap-server kafka-1:9092 --replication-factor 1 --partitions 3 --topic Orders
 
-kafka-topics.sh --describe --topic Orders--bootstrap-server kafka-1:9092
+kafka-topics.sh --describe --topic Orders --bootstrap-server kafka-1:9092
 
 kafka-console-consumer.sh --bootstrap-server kafka-1:9092,kafka-2:9092,kafka-3:9092 --topic Orders --from-beginning
 
