@@ -2,7 +2,7 @@ version: "3.8"
 services:
   zookeeper-1:
     container_name: zookeeper-1
-    image: kiumarsj/zookeeper:3.3.1
+    image: my-zookeeper:3.3.1
     build:
       context: ./zookeeper
     volumes:
@@ -12,7 +12,7 @@ services:
     - kafka
   kafka-1:
     container_name: kafka-1
-    image: kiumarsj/cp-kafka:3.3.1
+    image: my-kafka:3.3.1
     build: 
       context: .
     volumes:
@@ -22,7 +22,7 @@ services:
     - kafka
   kafka-2:
     container_name: kafka-2
-    image: kiumarsj/cp-kafka:3.3.1
+    image: my-kafka:3.3.1
     volumes:
     - ./config/kafka-2/server.properties:/kafka/config/server.properties
     - ./data/kafka-2/:/tmp/kafka-logs/
@@ -30,28 +30,18 @@ services:
     - kafka
   kafka-3:
     container_name: kafka-3
-    image: kiumarsj/cp-kafka:3.3.1
+    image: my-kafka:3.3.1
     volumes:
     - ./config/kafka-3/server.properties:/kafka/config/server.properties
     - ./data/kafka-3/:/tmp/kafka-logs/
     networks:
     - kafka
-  kafka-producer:
-    container_name: kafka-producer
-    image: kiumarsj/cp-kafka:3.3.1
-    working_dir: /kafka
-    entrypoint: /bin/bash
-    stdin_open: true
-    tty: true
-    networks:
-    - kafka
-  kafka-consumer:
-    container_name: kafka-consumer
-    image: kiumarsj/cp-kafka:3.3.1
-    working_dir: /kafka
-    entrypoint: /bin/bash
-    stdin_open: true
-    tty: true
+  kafka-4:
+    container_name: kafka-4
+    image: my-kafka:3.3.1
+    volumes:
+    - ./config/kafka-4/server.properties:/kafka/config/server.properties
+    - ./data/kafka-4/:/tmp/kafka-logs/
     networks:
     - kafka
 networks: 
